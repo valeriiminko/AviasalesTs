@@ -1,6 +1,6 @@
-import { rootReducer } from './../reducers/rootReducer';
+import { rootReducer } from "./../reducers/rootReducer";
 import { applyMiddleware, createStore, compose } from "redux";
-import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
 
 // declare global {
 //     interface Window {
@@ -8,5 +8,11 @@ import thunk from 'redux-thunk';
 //     }
 //   }
 
-export const store = createStore(rootReducer, compose(applyMiddleware(thunk), (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-))
+export const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);

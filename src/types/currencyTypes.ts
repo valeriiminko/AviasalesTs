@@ -1,14 +1,13 @@
-export interface CurrencyState{
-    currency: string,
-    active: boolean
+export interface CurrencyState {
+  currency: string;
+  active: boolean;
 }
 
-export interface CurrencyAction{
-    type: string,
-    currency: string,
-    active: boolean
+export interface CurrencyAction {
+  type: string;
+  currency: string;
+  active: boolean;
 }
-
 
 // enum CurrencyFields{
 //     USD = 'USD',

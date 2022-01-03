@@ -1,17 +1,11 @@
-.currency{
-
-    button{
-
-        &#bd{
-            border: 1px solid gray;
-        }
-        .btn{
-            &-light{
-               
-                
-            }
-
-            
-        }
+.currency {
+  button {
+    &#bd {
+      border: 1px solid gray;
     }
+    .btn {
+      &-light {
+      }
+    }
+  }
 }

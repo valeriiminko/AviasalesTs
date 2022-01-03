@@ -1,11 +1,12 @@
-import { CurrencyAction } from "../../types/currencyTypes"
+import { CurrencyAction } from "../../types/currencyTypes";
 
-
-
-export const currencyAction = (currency: string, active: boolean) : CurrencyAction => {
-    return{
-        type: currency,
-        currency,
-        active
-    }
-}
+export const currencyAction = (
+  currency: string,
+  active: boolean
+): CurrencyAction => {
+  return {
+    type: currency,
+    currency,
+    active,
+  };
+};
