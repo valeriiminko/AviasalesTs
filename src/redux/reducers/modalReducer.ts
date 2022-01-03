@@ -24,118 +24,13 @@ export const modalReducer = (
 ): modalValidationState => {
   switch (action.type) {
     case EMAIL:
-      return {
-        ...state,
-        form: FORM_VALIDATION.map((item): modalValidationFieldsAction => {
-          const { type, isError, message, value, Error_message, input_type } =
-            item;
-          return type === action.currentPropName
-            ? {
-                type,
-                isError,
-                message,
-                value: action.currentField,
-                Error_message,
-                input_type,
-              }
-            : {
-                type,
-                isError: !isError,
-                message,
-                value: !isError ? state.currentField : "",
-                Error_message,
-                input_type,
-              };
-        }),
-        currentField: action.currentField,
-        currentPropName: action.currentPropName,
-      };
-
     case NAME:
-      return {
-        ...state,
-        form: FORM_VALIDATION.map((item): modalValidationFieldsAction => {
-          const { type, isError, message, value, Error_message, input_type } =
-            item;
-          return type === action.currentPropName
-            ? {
-                type,
-                isError,
-                message,
-                value: action.currentField,
-                Error_message,
-                input_type,
-              }
-            : {
-                type,
-                isError: !isError,
-                message,
-                value,
-                Error_message,
-                input_type,
-              };
-        }),
-        currentField: action.currentField,
-        currentPropName: action.currentPropName,
-      };
     case SURNAME:
-      return {
-        ...state,
-        form: FORM_VALIDATION.map((item): modalValidationFieldsAction => {
-          const { type, isError, message, value, Error_message, input_type } =
-            item;
-          return type === action.currentPropName
-            ? {
-                type,
-                isError,
-                message,
-                value: action.currentField,
-                Error_message,
-                input_type,
-              }
-            : {
-                type,
-                isError: !isError,
-                message,
-                value,
-                Error_message,
-                input_type,
-              };
-        }),
-        currentField: action.currentField,
-        currentPropName: action.currentPropName,
-      };
     case PHONE:
-      return {
-        ...state,
-        form: FORM_VALIDATION.map((item): modalValidationFieldsAction => {
-          const { type, isError, message, value, Error_message, input_type } =
-            item;
-          return type === action.currentPropName
-            ? {
-                type,
-                isError,
-                message,
-                value: action.currentField,
-                Error_message,
-                input_type,
-              }
-            : {
-                type,
-                isError: !isError,
-                message,
-                value,
-                Error_message,
-                input_type,
-              };
-        }),
-        currentField: action.currentField,
-        currentPropName: action.currentPropName,
-      };
     case PASSPORT:
       return {
         ...state,
-        form: FORM_VALIDATION.map((item): modalValidationFieldsAction => {
+        form: state.form.map((item): modalValidationFieldsAction => {
           const { type, isError, message, value, Error_message, input_type } =
             item;
           return type === action.currentPropName
@@ -147,14 +42,7 @@ export const modalReducer = (
                 Error_message,
                 input_type,
               }
-            : {
-                type,
-                isError: !isError,
-                message,
-                value,
-                Error_message,
-                input_type,
-              };
+            : item;
         }),
         currentField: action.currentField,
         currentPropName: action.currentPropName,
