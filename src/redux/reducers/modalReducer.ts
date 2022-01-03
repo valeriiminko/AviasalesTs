@@ -17,7 +17,7 @@ const initialState: modalValidationState = {
   currentField: "",
   currentPropName: "",
 };
-
+// commentsadsd
 export const modalReducer = (
   state = initialState,
   action: modalValidationsAction
