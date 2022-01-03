@@ -10,7 +10,7 @@ export const onSortStops = (
     // console.log(value.value !== currentstop);
     return stopsAction(stops, value.value);
   } else {
-    console.log(currentstop);
+    // console.log(currentstop);
     return stopsAction(stops, value.value);
   }
 };

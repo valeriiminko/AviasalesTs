@@ -8,8 +8,8 @@ export const onHandleModal = (
   e.preventDefault();
   let event_value = e.target as HTMLButtonElement;
   if (event_value.value !== name) {
-    console.log(event_value.value !== name);
-    console.log(tickets);
+    // console.log(event_value.value !== name);
+    // console.log(tickets);
     return handleModalAction(tickets, event_value.value);
   }
 

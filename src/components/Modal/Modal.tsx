@@ -30,8 +30,8 @@ const Modal: React.FC<Props> = ({ isActive, setActive }: Props) => {
     let val = e.target as HTMLButtonElement;
     let name = e.target as HTMLButtonElement;
     // name.name = value.value;
-    console.log(val.value);
-    console.log(name.name);
+    // console.log(val.value);
+    // console.log(name.name);
 
     // if(value){
 
@@ -52,14 +52,14 @@ const Modal: React.FC<Props> = ({ isActive, setActive }: Props) => {
           {form.map((item, inx) => {
             const { type, isError, message, Error_message, input_type, value } =
               item;
-            console.log(
-              type,
-              isError,
-              message,
-              Error_message,
-              input_type,
-              value
-            );
+            // console.log(
+            //   type,
+            //   isError,
+            //   message,
+            //   Error_message,
+            //   input_type,
+            //   value
+            // );
             return (
               <div className="form-group" key={inx}>
                 <label htmlFor={type}>{type}</label>

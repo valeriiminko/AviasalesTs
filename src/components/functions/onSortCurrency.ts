@@ -8,7 +8,7 @@ export const onSortCurrency = (
   e.preventDefault();
   let value = e.target as HTMLButtonElement;
   if (value.value !== currency) {
-    console.log(value.value);
+    // console.log(value.value);
     return currencyAction(value.value, (active = true));
   }
   return currencyAction(value.value, (active = false));
