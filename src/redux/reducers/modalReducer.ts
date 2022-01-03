@@ -10,7 +10,7 @@ const initialState: modalValidationState = {
 export const modalReducer = (state = initialState, action:modalValidationsAction): modalValidationState => {
     switch(action.type){
         case EMAIL: return {
-            ...state, form: FORM_VALIDATION.map((item) : modalValidationFieldsAction => {
+            ...state, form: state.form.map((item) : modalValidationFieldsAction => {
                 const {type, isError, message, value, Error_message, input_type} = item;
                 return type === action.currentPropName ? {
                     type,
@@ -45,7 +45,7 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
                     type,
                     isError: !isError,
                     message,
-                    value,
+                    value: !isError ? state.currentField: '',
                     Error_message,
                     input_type
                 }
@@ -66,7 +66,7 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
                     type,
                     isError: !isError,
                     message,
-                    value,
+                    value: !isError ? state.currentField: '',
                     Error_message,
                     input_type
                 }
@@ -87,7 +87,7 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
                     type,
                     isError: !isError,
                     message,
-                    value,
+                    value: !isError ? state.currentField: '',
                     Error_message,
                     input_type
                 }
@@ -108,7 +108,7 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
                     type,
                     isError: !isError,
                     message,
-                    value,
+                    value: !isError ? state.currentField: '',
                     Error_message,
                     input_type
                 }

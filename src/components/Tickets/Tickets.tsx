@@ -50,38 +50,36 @@ const Tickets:React.FC<Props> = ({isActive, setActive} : Props) => {
         <div>
                     {ticketsData.map((ticket, inx) => {
                         return(<div className="card-wrapper onblur" key={inx} >
-                                    <div className="card mt-4">
-                                        <div className="card-body">
-                                            <div className="view-buy">
-                                                <img src={image} alt="" />
-                                                <button className="btn btn-orange" value={ticket.price}
-                                                    onClick={() => setActive(true)}
-                                                >Купить <br />за   {new Intl.NumberFormat('fr-FR', {
-                                                    style: 'currency',
-                                                    currency:validData,
-                                                    currencyDisplay: 'narrowSymbol'
-                                                    }).format(ticket.price).replace(/^(\D+)/, '$1 ')}
-                                                </button>
+                                    <div className="card">
+                                        <div className="card-body p-0">
+                                            <div className='positioned'>
+                                                <div className="view-buy">
+                                                    <img src={image} alt="" />
+                                                    <button className="btn btn-orange" value={ticket.price}
+                                                        onClick={() => setActive(true)}
+                                                    >Купить <br />за   {new Intl.NumberFormat('fr-FR', {
+                                                        style: 'currency',
+                                                        currency:validData,
+                                                        currencyDisplay: 'narrowSymbol'
+                                                        }).format(ticket.price).replace(/^(\D+)/, '$1 ')}
+                                                    </button>
+                                                </div>
+                                                <div className="view-info">
+                                                <div className="departure">
+                                                    <p className="departure_time">{ticket.departure_time}</p>
+                                                    <p>{ticket.origin}, {ticket.origin_name}</p>
+                                                    <p>{ticket.arrival_date}</p>
+                                                    <p> {ticket.stops}</p>
+                                                </div>
+                                                <div className="arrival">
+                                                    <p className="arrival_time">{ticket.arrival_time}</p>
+                                                    <p className="arrival_time">{ticket.destination}, {ticket.destination_name}</p>
+                                                    <p className="arrival_time">{ticket.arrival_date}</p>
+                                                </div>
                                             </div>
+                                        </div>
                                         </div>
                                  </div>
-                                <div className="card mt-4">
-                                    <div className="card body">
-                                        <div className="view-info">
-                                            <div className="departure">
-                                                <p className="departure_time">{ticket.departure_time}</p>
-                                                <p>{ticket.origin}, {ticket.origin_name}</p>
-                                                <p>{ticket.arrival_date}</p>
-                                                <p> {ticket.stops}</p>
-                                            </div>
-                                            <div className="arrival">
-                                                <p className="arrival_time">{ticket.arrival_time}</p>
-                                                <p className="arrival_time">{ticket.destination}, {ticket.destination_name}</p>
-                                                <p className="arrival_time">{ticket.arrival_date}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>)
                             
                     })}
