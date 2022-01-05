@@ -3,11 +3,12 @@ import { modalValidationsAction } from './../../types/modalTypes';
 
 
 
-export const modalValidationAction = (form: any[], currentField: string, currentPropName: string):modalValidationsAction  => {
+export const modalValidationAction = (form: any[], currentField: string, currentPropName: string, currentError: boolean):modalValidationsAction  => {
     return{
         type:  currentPropName,
         form,
         currentField,
-        currentPropName
+        currentPropName,
+        currentError
     }
 }

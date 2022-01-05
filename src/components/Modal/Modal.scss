@@ -22,13 +22,17 @@
         padding: 20px;
         border-radius: 12px;
         background-color: white;
-        height: 400px;
-        width: 400px;
+        height: 470px;
+        width: 420px;
         transition: scale(0.5);
         transition: 0.4s all;
 
         &.active{
             transform: scale(1);
+
+            .form-group{
+                margin-bottom: 15px;
+            }
         }
     }
 }

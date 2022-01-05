@@ -1,14 +1,16 @@
 export interface modalValidationState{
     form: any[],
     currentField: string,
-    currentPropName: string
+    currentPropName: string,
+    currentError: boolean
 }
 
 export interface modalValidationsAction{
     type: string,
     form: any[],
     currentField: string,
-    currentPropName: string
+    currentPropName: string,
+    currentError: boolean
 }
 
 export interface modalValidationFieldsAction{
