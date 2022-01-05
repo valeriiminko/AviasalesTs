@@ -1,43 +1,38 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { onHandleModal } from '../functions/onHandleModal';
-import { usedTypedSelector } from '../hooks/usedTypedSelector';
+import React, { useState } from 'react'
 import { Props } from '../../types/modalTypes';
 import  './Modal.scss';
-import { modalValidationAction } from '../../redux/actions/modalValitaionAction';
 
 const Modal:React.FC<Props>= ({isActive, setActive} : Props) => {
-    const dispatch = useDispatch();
-    const tickets = usedTypedSelector(state => state.modalHandleReducer.tickets);
-    const currentname = usedTypedSelector(state => state.modalHandleReducer.currentname);
-    const form = usedTypedSelector(state => state.modalReducer.form);
-    // const [{type, isError, message, Error_message, input_type}] = form;
-    // console.log(type, isError, message, Error_message, input_type)
-    const currentField = usedTypedSelector(state => state.modalReducer.currentField);
+    const [formValidation, setFormValidation] = useState([
+        {type: 'email',  isError: false, message:'Email format is valid', value: '', Error_message:'Email format is invalid, use correct email format', input_type: 'email'},
+        {type: 'name', isError: false, message:'Name format is valid', value: '', Error_message:'Name format is invalid, use correct name format', input_type: 'text'},
+        {type: 'surname', isError: false, message:'Surname format is valid', value: '', Error_message:'Surname format is invalid, use surname email format', input_type: 'text'},
+        {type: 'phone', isError: false, message:'Phone format is valid', value: '', Error_message:'Phone format is invalid, use correct phone format', input_type: 'tel'},
+        {type: 'passport', isError: false, message:'Passport format is valid', value: '', Error_message:'Passport format is invalid, use correct passport format', input_type: 'text'}
+    ]);
 
-
-    const onInputsChange = (e: React.ChangeEvent<EventTarget>, form: any[], currentField: string, currentPropName:string) => {
-        let val = e.target as HTMLButtonElement;
-        let name = e.target as HTMLButtonElement;
-        // name.name = value.value;
-        console.log(val.value)
-        console.log(name.name)
-
-        // if(value){
-            
-        // }
-        return modalValidationAction(form, val.value, name.name)
+    const onBlurForm = (e:React.FocusEvent<HTMLInputElement>) => {
+        const [{type, isError, message, value, Error_message, input_type}] = formValidation
+        let name = e.target.name;
+        console.log(name);
+        switch(name){
+            case type: setFormValidation(prevState => {
+                return{
+                    ...prevState,
+                    
+                }
+            })
+        }
+        
     }
-
-
-
+    
 
 
     return (
         <div className= {isActive ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
             <div className={isActive ? 'modal__content active' : 'modal'} onClick={e => e.stopPropagation()}>
             <form>
-            {form.map((item,inx) =>{
+            {formValidation.map((item,inx) =>{
             const {type, isError, message, Error_message, input_type, value} = item;
             console.log(type, isError, message, Error_message, input_type,value )
             return(
@@ -47,7 +42,8 @@ const Modal:React.FC<Props>= ({isActive, setActive} : Props) => {
                                     name={type}
                                     placeholder={!value ? Error_message: 'Enter email'}  
                                     value={value} 
-                                    onChange={(e) => dispatch(onInputsChange(e, form, e.target.value, e.target.name))}/>
+                                    onBlur={(e) => onBlurForm(e)}
+                                   />
                                 </div>
             )
         })}
