@@ -1,4 +1,4 @@
-import {  modalValidationFieldsAction, modalValidationsAction, modalValidationState } from "../../types/modalTypes"
+import {  Form,  modalValidationsAction, modalValidationState } from "../../types/modalTypes"
 import { EMAIL,  FORM_VALIDATION, NAME, PASSPORT, PHONE, regexp, SURNAME,  } from "../../utils/constants"
 
 const initialState: modalValidationState = {
@@ -16,12 +16,12 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
         case PHONE:
         case PASSPORT:
         return {
-            ...state, form: state.form.map((item) : modalValidationFieldsAction => {
+            ...state, form: state.form.map((item) : Form => {
                 const {type, isError, message, value, Error_message, input_type} = item;
                 return type === action.currentPropName ? {
                     type,
                     // isError: !value || !regexp.test(String(value).toLowerCase()) ? isError : !isError,
-                    isError: !value ||  !regexp.test(String(value).toLowerCase()) ? !isError : isError,
+                    isError: action.isError,
                     message,
                     value: action.currentField,
                     Error_message,
@@ -29,7 +29,7 @@ export const modalReducer = (state = initialState, action:modalValidationsAction
                 }: item
             }), currentField: action.currentField,
             currentPropName: action.currentPropName,
-            currentError: action.currentError
+            currentError: action.isError
             
         }
         
