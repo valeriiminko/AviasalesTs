@@ -47,6 +47,7 @@ const Tickets:React.FC<Props> = ({isActive, setActive} : Props) => {
 
     const validData = currency.length > 0 ? currency : 'USD';
     return (
+        <div className="col-8">
         <div>
                     {ticketsData.map((ticket, inx) => {
                         return(<div className="card-wrapper onblur" key={inx} >
@@ -84,6 +85,7 @@ const Tickets:React.FC<Props> = ({isActive, setActive} : Props) => {
                             
                     })}
                   
+            </div>
             </div>
     )
 }
